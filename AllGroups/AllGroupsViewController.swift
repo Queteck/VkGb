@@ -12,7 +12,7 @@ import RealmSwift
 class AllGroupsViewController: UITableViewController {
     var notificationToken: NotificationToken? = nil
     
-    var groupsList: [VKGroup] = []
+    private var groupsList: [VKGroup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
