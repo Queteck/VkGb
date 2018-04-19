@@ -12,12 +12,12 @@ import RealmSwift
 class AllGroupsViewController: UITableViewController {
     var notificationToken: NotificationToken? = nil
     
-    private var groupsList: [VKGroup] = []
+    private var groupsList: Results<VKGroup>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareRealm()
         loadGroups()
-
     }
     
     deinit {
@@ -26,10 +26,10 @@ class AllGroupsViewController: UITableViewController {
     
     func prepareRealm() {
         let realm = try! Realm()
-        let results = realm.objects(VKGroup.self)
+        groupsList = realm.objects(VKGroup.self)
         
         // Observe Results Notifications
-        notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
+        notificationToken = groupsList?.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
             switch changes {
             case .initial:
@@ -54,7 +54,7 @@ class AllGroupsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupsList.count
+        return groupsList?.count ?? 0
         
     }
     
@@ -64,7 +64,7 @@ class AllGroupsViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Groups", for: indexPath) as! AllGroupsViewCell
-        let group = groupsList[indexPath.row]
+        let group = groupsList![indexPath.row]
         cell.groupName.text = group.name
         
         
@@ -82,8 +82,6 @@ class AllGroupsViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            groupsList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
 //            guard let id = groupsList[indexPath.row].id else { return }
             
 //            groupsList!.leaveFromGroup(groupID: id) {}
