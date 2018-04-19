@@ -2,11 +2,13 @@
 //  AppDelegate.swift
 //  VkGb
 //
-//  Created by Наталья Давыдова on 04.04.2018.
+//  Created by VitaliyFilippov on 04.04.2018.
 //  Copyright © 2018 VitaliyFilippov. All rights reserved.
 //
 
 import UIKit
+import Alamofire
+var token = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
