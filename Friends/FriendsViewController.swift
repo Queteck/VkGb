@@ -7,55 +7,64 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+import RealmSwift
 
 class FriendsViewController: UITableViewController {
-    
-    let baseUrl = "https://api.vk.com/method/"
-    let protocolVersion = "5.74"
-    var friendsList: [VKFriend] = []
+    var notificationToken: NotificationToken? = nil
+
+    private var friendsList: Results<VKFriend>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareRealm()
         loadFriends()
     }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    
+    deinit {
+        notificationToken?.invalidate()
+    }
+    
+    func prepareRealm() {
+        let realm = try! Realm()
+        friendsList = realm.objects(VKFriend.self)
+        
+        // Observe Results Notifications
+        notificationToken = friendsList?.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the UITableView
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+            }
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return friendsList.count
-       
+        return friendsList?.count ?? 0
+        
     }
     
     func loadFriends() {
-        let parameters: Parameters = [
-            "access_token": token,
-            "fields": "first_name, photo_50",
-            "lang": "ru",
-            "count": "3",
-            "v": protocolVersion
-        ]
-        let path = "friends.get"
-        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData { response in
-            switch response.result {
-            case .success(let value):
-                print(String(data: value, encoding: .utf8))
-                let friendResponse = try! JSONDecoder().decode(FriendResponse.self, from: value)
-                self.friendsList = friendResponse.response.items
-                self.tableView.reloadData()
-            case .failure(_):
-                break
-            }
-        }
+        let service: FriendsService = FriendsService()
+        service.loadFriends()
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VKFriendCell", for: indexPath) as! FriendsViewCell
-        let friend = friendsList[indexPath.row]
+        let friend = friendsList![indexPath.row]
         cell.friendsName.text = friend.first_name + " " + friend.last_name
         
         
@@ -70,13 +79,13 @@ class FriendsViewController: UITableViewController {
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showPhotos" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destVC = segue.destination as! FriendsPhotoViewController
-                destVC.id = friendsList[indexPath.row].id
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showPhotos" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                let destVC = segue.destination as! FriendsPhotoViewController
+//                destVC.id = friendsList![indexPath.row].id
+//            }
+//        }
+//    }
 }
 

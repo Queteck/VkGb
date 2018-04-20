@@ -7,19 +7,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct VKFriend: Codable {
-    let first_name: String
-    let last_name: String
-    let photo_50: String
-    let id: Int
-}
-
-struct FriendResponse: Codable {
-    let response: Friends
-}
-
-struct Friends: Codable {
-    let count: Int
-    let items: [VKFriend]
+class VKFriend: Object {
+    @objc dynamic var first_name: String = ""
+    @objc dynamic var last_name: String = ""
+    @objc dynamic var photo_50: String = ""
+    
+    convenience init(photo_50: String, first_name: String, last_name: String) {
+        self.init()
+        self.photo_50 = photo_50
+        self.first_name = first_name
+        self.last_name = last_name
+    }
 }
