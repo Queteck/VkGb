@@ -35,6 +35,8 @@ class AllGroupsService: Service {
         let realm = try! Realm()
         
         try! realm.write {
+            let oldGroups = realm.objects(VKGroup.self)
+            realm.delete(oldGroups)
             realm.add(groups)
         }
     }

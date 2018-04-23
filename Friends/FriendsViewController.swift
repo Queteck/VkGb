@@ -79,13 +79,13 @@ class FriendsViewController: UITableViewController {
     
     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showPhotos" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let destVC = segue.destination as! FriendsPhotoViewController
-//                destVC.id = friendsList![indexPath.row].id
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPhotos" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destVC = segue.destination as! FriendsPhotoViewController
+                destVC.id = friendsList![indexPath.row].id
+            }
+        }
+    }
 }
 

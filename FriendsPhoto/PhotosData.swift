@@ -7,16 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct VKPhotos: Codable {
-    let photo_75: String
-    let owner_id: Int
-}
-struct PhotoResponse: Codable {
-    let response: Photos
-}
-
-struct Photos: Codable {
-    let count: Int
-    let items: [VKPhotos]
+class VKPhotos: Object {
+    @objc dynamic var photo_75: String = ""
+    @objc dynamic var owner_id: Int = 0
+    convenience init(photo_75: String, owner_id: Int) {
+        self.init()
+        self.photo_75 = photo_75
+        self.owner_id = owner_id
+    }
 }

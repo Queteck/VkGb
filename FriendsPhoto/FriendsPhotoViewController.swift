@@ -7,43 +7,39 @@
 
 
 import UIKit
-import Alamofire
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
 class FriendsPhotoViewController: UICollectionViewController {
+    var notificationToken: NotificationToken? = nil
     var id: Int!
     
-    let baseUrl = "https://api.vk.com/method/"
-    let protocolVersion = "5.74"
-    var photoList: [VKPhotos] = [] {
-        didSet {
-        }
-    }
-
+    private var photosList: Results<VKPhotos>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareRealm()
         loadPhotos()
+    }
+
+    deinit {
+        notificationToken?.invalidate()
+    }
+
+    func prepareRealm() {
+        let realm = try! Realm()
+        photosList = realm.objects(VKPhotos.self)
+        
+        // Observe Results Notifications
+        notificationToken = photosList?.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let collectionView = self?.collectionView else { return }
+            collectionView.reloadData()
         }
-    func loadPhotos() {
-        let parameters: Parameters = [
-            "access_token": token,
-            "owner_id": id,
-            "count": "3",
-            "v": protocolVersion
-        ]
-        let path = "photos.getAll"
-        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData { response in
-            switch response.result {
-            case .success(let value):
-                print(String(data: value, encoding: .utf8))
-                let photoResponse = try! JSONDecoder().decode(PhotoResponse.self, from: value)
-                self.photoList = photoResponse.response.items
-                self.collectionView?.reloadData()
-            case .failure(_):
-                break
-            }
-        }
+        
+        
+        
+
     }
 //        // Uncomment the following line to preserve selection between presentations
 //        // self.clearsSelectionOnViewWillAppear = false
@@ -76,16 +72,22 @@ class FriendsPhotoViewController: UICollectionViewController {
     }
 //
 //
+    func loadPhotos() {
+        let friendsPhotoService = FriendsPhotoService()
+        friendsPhotoService.loadPhotos(ownerID: id)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoList.count
+        return photosList!.count
     }
 //
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsPhoto", for: indexPath) as! FriendsPhotoViewCell
-//        let id = photoList[indexPath.row]
+//        let id = photosList![indexPath.row]
+//        let friend = photosList[indexPath.row]
 //        cell.friendsName.text = friend.first_name + " " + friend.last_name
         
-        let photo: String = photoList[indexPath.row].photo_75
+        let photo: String = photosList![indexPath.row].photo_75
         do {
             try cell.photoView.image = UIImage(data: Data(contentsOf: URL(string:photo)!))!
         } catch {
