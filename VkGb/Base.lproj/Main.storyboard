@@ -58,7 +58,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="A7p-vg-eEh" kind="relationship" relationship="viewControllers" id="byN-Ss-Y61"/>
+                        <segue destination="2ae-Hh-xSV" kind="relationship" relationship="viewControllers" id="ZPh-uM-uPS"/>
                         <segue destination="qSK-ss-MJt" kind="relationship" relationship="viewControllers" id="Hub-EO-i1Y"/>
                         <segue destination="cLb-3Y-RnK" kind="relationship" relationship="viewControllers" id="60h-Wb-AM2"/>
                     </connections>
@@ -68,121 +68,14 @@
             <point key="canvasLocation" x="825" y="50"/>
         </scene>
         <!--Friends-->
-        <scene sceneID="aCI-fQ-EwO">
+        <scene sceneID="HKg-hz-it3">
             <objects>
-                <navigationController id="A7p-vg-eEh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="OFn-ct-MkY"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Xp-za-2yi">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uPM-n3-hcd" kind="relationship" relationship="rootViewController" id="uf9-AU-fCC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UAk-NR-tBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Friends" id="2ae-Hh-xSV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" id="enA-WG-GfF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ow-CY-XeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="-344"/>
-        </scene>
-        <!--Friends-->
-        <scene sceneID="b3j-Z8-1RQ">
-            <objects>
-                <tableViewController id="uPM-n3-hcd" customClass="FriendsViewController" customModule="VkGb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="VKFriendCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b8c-Ak-UJ3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VKFriendCell" textLabel="bfg-i1-eDv" imageView="EM4-dT-QVC" style="IBUITableViewCellStyleDefault" id="5o5-wl-u8r" customClass="FriendsViewCell" customModule="VkGb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5o5-wl-u8r" id="GF6-PD-VHf" customClass="FriendsViewCell" customModule="VkGb" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="uid" insetsLayoutMarginsFromSafeArea="NO" text="friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bfg-i1-eDv">
-                                            <rect key="frame" x="75" y="0.0" width="284" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="friendAvatar" id="EM4-dT-QVC">
-                                            <rect key="frame" x="16" y="0.0" width="44" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="friendAvatar" destination="EM4-dT-QVC" id="6Df-QQ-FWY"/>
-                                    <outlet property="friendsList" destination="GF6-PD-VHf" id="ulA-cL-656"/>
-                                    <outlet property="friendsName" destination="bfg-i1-eDv" id="wk8-n9-hej"/>
-                                    <segue destination="oq9-4z-H16" kind="show" identifier="showPhotos" id="AJV-Wt-wFA"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="uPM-n3-hcd" id="cIL-Cn-BSB"/>
-                            <outlet property="delegate" destination="uPM-n3-hcd" id="KcW-Nz-nQ8"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Friends" id="DJh-1e-QBc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hGj-fu-RBf"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WA7-Ur-RWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2514" y="-347"/>
-        </scene>
-        <!--Friends Photo View Controller-->
-        <scene sceneID="Unk-OD-Dd3">
-            <objects>
-                <collectionViewController id="oq9-4z-H16" customClass="FriendsPhotoViewController" customModule="VkGb" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dku-DL-Jiu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9tH-Jq-LeD">
-                            <size key="itemSize" width="150" height="150"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendsPhoto" id="69k-py-7dY" customClass="FriendsPhotoViewCell" customModule="VkGb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t46-Rt-Ut7">
-                                            <rect key="frame" x="54" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="PhotoView" translatesAutoresizingMaskIntoConstraints="NO" id="HdA-o3-6Us">
-                                            <rect key="frame" x="37" y="44" width="76" height="74"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <connections>
-                                    <outlet property="photoView" destination="HdA-o3-6Us" id="tk2-6p-chT"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="oq9-4z-H16" id="ZfF-wE-A4R"/>
-                            <outlet property="delegate" destination="oq9-4z-H16" id="yUy-rn-itx"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lmo-b5-evD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3428" y="-348.57571214392806"/>
+            <point key="canvasLocation" x="1511" y="-302"/>
         </scene>
         <!--Groups-->
         <scene sceneID="wwz-3x-9Hu">
@@ -496,7 +389,6 @@
     </scenes>
     <resources>
         <image name="comment" width="25" height="25"/>
-        <image name="friendAvatar" width="512" height="512"/>
         <image name="heart" width="16" height="16"/>
         <image name="repost" width="25" height="25"/>
         <image name="view" width="25" height="25"/>
