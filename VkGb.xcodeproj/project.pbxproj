@@ -28,6 +28,7 @@
 		AC702626208F287000ABDAFD /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC702625208F287000ABDAFD /* NewsViewCell.swift */; };
 		AC7521DC2085376A00DA2EAB /* PhotosData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7521DB2085376A00DA2EAB /* PhotosData.swift */; };
 		AC7521DE20853FDB00DA2EAB /* GroupsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7521DD20853FDB00DA2EAB /* GroupsData.swift */; };
+		AC82C88920923D1600667E4C /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC82C88820923D1600667E4C /* Groups.storyboard */; };
 		ACACBB5820754A0E0048D1C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACBB5720754A0E0048D1C3 /* AppDelegate.swift */; };
 		ACACBB5D20754A0E0048D1C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACACBB5B20754A0E0048D1C3 /* Main.storyboard */; };
 		ACACBB5F20754A0E0048D1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACACBB5E20754A0E0048D1C3 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		AC702625208F287000ABDAFD /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		AC7521DB2085376A00DA2EAB /* PhotosData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosData.swift; sourceTree = "<group>"; };
 		AC7521DD20853FDB00DA2EAB /* GroupsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsData.swift; sourceTree = "<group>"; };
+		AC82C88820923D1600667E4C /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		ACACBB5420754A0E0048D1C3 /* VkGb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkGb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACACBB5720754A0E0048D1C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACACBB5C20754A0E0048D1C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				AC319B40209113370048984B /* Friends.storyboard */,
+				AC82C88820923D1600667E4C /* Groups.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -219,7 +222,6 @@
 				ACACBB5120754A0E0048D1C3 /* Frameworks */,
 				ACACBB5220754A0E0048D1C3 /* Resources */,
 				8D864F36394C98F748C63435 /* [CP] Embed Pods Frameworks */,
-				FA001FD8230FA4FDBACC66FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC82C88920923D1600667E4C /* Groups.storyboard in Resources */,
 				AC319B41209113370048984B /* Friends.storyboard in Resources */,
 				ACACBB6220754A0E0048D1C3 /* LaunchScreen.storyboard in Resources */,
 				ACACBB5F20754A0E0048D1C3 /* Assets.xcassets in Resources */,
@@ -319,21 +322,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkGb/Pods-VkGb-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA001FD8230FA4FDBACC66FD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkGb/Pods-VkGb-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

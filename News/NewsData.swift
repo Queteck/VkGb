@@ -8,18 +8,16 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 class NewsData: Object {
-//    @objc dynamic var first_name: String = ""
-//    @objc dynamic var last_name: String = ""
-//    @objc dynamic var photo_50: String = ""
-//    @objc dynamic var id: Int = 0
-//    
-//    convenience init(photo_50: String, first_name: String, last_name: String, id: Int) {
-//        self.init()
-//        self.photo_50 = photo_50
-//        self.first_name = first_name
-//        self.last_name = last_name
-//        self.id = id
-//    }
+    @objc dynamic var text: String = ""
+    @objc dynamic var source_id: Int = 0
+    
+    convenience init(json: JSON) {
+        self.init()
+        self.text = json["text"].stringValue
+        self.source_id = json["source_id"].intValue
+        
+    }
 }

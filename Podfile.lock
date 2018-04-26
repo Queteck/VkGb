@@ -12,6 +12,13 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Realm
+    - RealmSwift
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
@@ -20,4 +27,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7b49c91523e2aba803cd9d69d3acfb58663f3f19
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
