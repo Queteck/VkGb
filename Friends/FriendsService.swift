@@ -23,7 +23,7 @@ class FriendsService: Service {
             "v": protocolVersion
         ]
         
-        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             let json = try! JSON(data: data)
             let friendsList = json["response"]["items"].array!.map { VKFriend(photo_50: $0["photo_50"].stringValue, first_name: $0["first_name"].stringValue, last_name: $0["last_name"].stringValue, id: $0["id"].intValue)}

@@ -59,7 +59,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="2ae-Hh-xSV" kind="relationship" relationship="viewControllers" id="ZPh-uM-uPS"/>
-                        <segue destination="qSK-ss-MJt" kind="relationship" relationship="viewControllers" id="Hub-EO-i1Y"/>
+                        <segue destination="lFN-0J-0Qu" kind="relationship" relationship="viewControllers" id="oCh-hQ-zfU"/>
                         <segue destination="cLb-3Y-RnK" kind="relationship" relationship="viewControllers" id="60h-Wb-AM2"/>
                     </connections>
                 </tabBarController>
@@ -78,129 +78,14 @@
             <point key="canvasLocation" x="1511" y="-302"/>
         </scene>
         <!--Groups-->
-        <scene sceneID="wwz-3x-9Hu">
-            <objects>
-                <navigationController id="qSK-ss-MJt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="XCX-iC-GFS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="28A-Vd-9Je">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="P1g-Yx-n11" kind="relationship" relationship="rootViewController" id="scf-jM-g6V"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PBj-Co-IdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1700" y="427"/>
-        </scene>
-        <!--Groups-->
         <scene sceneID="78F-Xb-Foy">
             <objects>
-                <viewControllerPlaceholder storyboardName="Groups" id="lFN-0J-0Qu" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Groups" id="lFN-0J-0Qu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" id="jcO-aT-BUR"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVR-4p-tnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="954"/>
-        </scene>
-        <!--AllGroups-->
-        <scene sceneID="sUk-Fm-NOj">
-            <objects>
-                <tableViewController id="P1g-Yx-n11" customClass="AllGroupsViewController" customModule="VkGb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RbE-e5-nxO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Groups" textLabel="o9N-qg-OL3" imageView="cgo-v5-CwP" style="IBUITableViewCellStyleDefault" id="3Bv-y1-e01" customClass="AllGroupsViewCell" customModule="VkGb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Bv-y1-e01" id="kNw-rg-kCm" customClass="AllGroupsViewCell" customModule="VkGb" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o9N-qg-OL3">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cgo-v5-CwP">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="groupAvatar" destination="cgo-v5-CwP" id="O8g-d1-k72"/>
-                                    <outlet property="groupName" destination="o9N-qg-OL3" id="Xef-wz-sTv"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="P1g-Yx-n11" id="Vfp-5I-nDR"/>
-                            <outlet property="delegate" destination="P1g-Yx-n11" id="I5k-kB-C2M"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="AllGroups" id="7yl-YM-aTd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="EcK-Pa-DHk">
-                            <connections>
-                                <segue destination="MwY-fy-Trc" kind="show" id="Z7i-2J-DNK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P8D-OU-8jY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2514" y="427"/>
-        </scene>
-        <!--Search View Controller-->
-        <scene sceneID="kBG-Vk-s3E">
-            <objects>
-                <tableViewController id="MwY-fy-Trc" customClass="SearchViewController" customModule="VkGb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rh6-vV-LfS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="J1y-8Z-bvE">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search" textLabel="Azt-4j-fGj" style="IBUITableViewCellStyleDefault" id="ym9-Uh-VNJ" customClass="SearchViewCell" customModule="VkGb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ym9-Uh-VNJ" id="1SU-bh-8Br" customClass="SearchViewCell" customModule="VkGb" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Azt-4j-fGj">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="searchName" destination="Azt-4j-fGj" id="oj2-qu-6OW"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="MwY-fy-Trc" id="VCa-xs-0kc"/>
-                            <outlet property="delegate" destination="MwY-fy-Trc" id="6gx-ln-GM5"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="searchBar" destination="J1y-8Z-bvE" id="Ib0-01-P0v"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mVp-zR-i4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3428" y="427"/>
+            <point key="canvasLocation" x="1445" y="363"/>
         </scene>
         <!--News-->
         <scene sceneID="RLq-5N-qHk">
@@ -411,6 +296,14 @@
                                     <outlet property="NewsText" destination="XMR-XN-3ft" id="ncc-tP-5H4"/>
                                     <outlet property="RepostCount" destination="wDu-sW-CvS" id="oEr-sX-Hcs"/>
                                     <outlet property="ViewsCount" destination="CL6-bV-AM1" id="qga-Sf-1wv"/>
+                                    <outlet property="authorAvatar" destination="hmJ-dX-NAb" id="hb3-l9-clO"/>
+                                    <outlet property="authorName" destination="O2w-Sp-Gxe" id="Ffz-Jw-pje"/>
+                                    <outlet property="commentsCount" destination="OTa-XM-8bL" id="5TQ-Ra-ido"/>
+                                    <outlet property="likesCount" destination="5yS-t2-CkS" id="QxQ-DQ-39p"/>
+                                    <outlet property="newsImage" destination="NQh-KQ-Vh3" id="1ZE-fY-TwN"/>
+                                    <outlet property="newsText" destination="XMR-XN-3ft" id="wy3-ma-6Xk"/>
+                                    <outlet property="repostCount" destination="wDu-sW-CvS" id="fdS-E4-Srx"/>
+                                    <outlet property="viewsCount" destination="CL6-bV-AM1" id="agd-Uf-lQ7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

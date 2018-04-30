@@ -21,14 +21,16 @@ class NewsService: Service {
             "v": protocolVersion
         ]
         
-        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else {
                 completion([])
                 return
             }
             let json = try! JSON(data: data)
             let news: [NewsData] = json["response"]["items"].array?.map { NewsData(json: $0)} ?? []
-            completion(news)
+            DispatchQueue.main.async {
+                completion(news)
+            }
         }
     }
 

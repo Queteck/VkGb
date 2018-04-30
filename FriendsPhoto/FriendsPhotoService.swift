@@ -21,7 +21,7 @@ class FriendsPhotoService: Service {
             "count": "3",
             "v": protocolVersion
         ]
-        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData { response in
+        Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             let json = try! JSON(data: data)
             let photosList = json["response"]["items"].array!.map { VKPhotos(photo_75: $0["photo_75"].stringValue, owner_id: $0[0].intValue)}
