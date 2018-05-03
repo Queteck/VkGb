@@ -14,22 +14,28 @@ import RealmSwift
 class NewsService: Service {
     let path = "newsfeed.get"
     
-    func loadNews(completion: @escaping ([NewsData]) -> Void) {
+    func loadNews(completion: @escaping ([NewsData], [ProfilesData]) -> Void) {
         let parameters: Parameters = [
             "access_token": token,
-            "count": "10",
+            "count": "50",
+            "filters": "photo",
             "v": protocolVersion
         ]
         
         Alamofire.request(baseUrl + path, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else {
-                completion([])
+                completion([], [])
                 return
             }
             let json = try! JSON(data: data)
-            let news: [NewsData] = json["response"]["items"].array?.map { NewsData(json: $0)} ?? []
+            let news: [NewsData] = json["response"]["items"].array?.map {
+                NewsData(json: $0["photos"]["items"].array!.first!)
+                } ?? []
+            let profiles: [ProfilesData] = json["response"]["profiles"].array?.map {
+                ProfilesData(json: $0)
+                } ?? []
             DispatchQueue.main.async {
-                completion(news)
+                completion(news, profiles)
             }
         }
     }

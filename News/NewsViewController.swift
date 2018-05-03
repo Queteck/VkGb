@@ -10,6 +10,7 @@ import UIKit
 
 class NewsViewController: UITableViewController {
     private var news: [NewsData] = []
+    private var profiles: [ProfilesData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,9 @@ class NewsViewController: UITableViewController {
     
     func loadNews() {
         let newsService = NewsService()
-        newsService.loadNews { (news) in
+        newsService.loadNews { (news, profiles) in
             self.news = news
+            self.profiles = profiles
             self.tableView.reloadData()
         }
     }
@@ -39,7 +41,9 @@ class NewsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
-        cell.config(newsData: news[indexPath.row])
+        let newsItem = news[indexPath.row]
+        let profile = profiles.filter { $0.id == newsItem.source_id}.first!
+        cell.config(newsData: newsItem, profile: profile)
         return cell
     }
 
