@@ -28,6 +28,8 @@ class NewsViewCell: UITableViewCell {
         authorName.text = String(profile.author)
         newsText.text = newsData.text
         commentsCount.text = String(newsData.comments)
+        repostCount.text = String(newsData.reposts)
+        viewsCount.text = String(newsData.views)
         likesCount.text = String(newsData.likes)
         
         DispatchQueue.global().async {

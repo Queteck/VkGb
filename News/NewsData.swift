@@ -15,6 +15,8 @@ class NewsData: Object {
     @objc dynamic var source_id: Int = 0
     @objc dynamic var comments: Int = 0
     @objc dynamic var likes: Int = 0
+    @objc dynamic var reposts: Int = 0
+    @objc dynamic var views: Int = 0
     @objc dynamic var photo: String = ""
     
     convenience init(json: JSON) {
@@ -24,5 +26,7 @@ class NewsData: Object {
         self.comments = json["comments"]["count"].intValue
         self.likes = json["likes"]["count"].intValue
         self.photo = json["photo_75"].stringValue
+        self.reposts = json["reposts"]["count"].intValue
+        self.views = json["views"]["count"].intValue
     }
 }
