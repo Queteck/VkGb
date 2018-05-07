@@ -18,7 +18,7 @@ class NewsService: Service {
         let parameters: Parameters = [
             "access_token": token,
             "count": "50",
-            "filters": "photo",
+            "filters": "photo", /*, wall_photo*/
             "v": protocolVersion
         ]
         
@@ -34,6 +34,7 @@ class NewsService: Service {
             let profiles: [ProfilesData] = json["response"]["profiles"].array?.map {
                 ProfilesData(json: $0)
                 } ?? []
+            // FIXME: add groups
             DispatchQueue.main.async {
                 completion(news, profiles)
             }

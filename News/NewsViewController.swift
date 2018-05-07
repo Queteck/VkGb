@@ -11,6 +11,12 @@ import UIKit
 class NewsViewController: UITableViewController {
     private var news: [NewsData] = []
     private var profiles: [ProfilesData] = []
+    
+    private let queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.qualityOfService = .userInteractive
+        return queue
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +49,8 @@ class NewsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
         let newsItem = news[indexPath.row]
         let profile = profiles.filter { $0.id == newsItem.source_id}.first!
-        cell.config(newsData: newsItem, profile: profile)
+        // FIXME: add group
+        cell.config(newsData: newsItem, profile: profile, queue: queue)
         return cell
     }
 

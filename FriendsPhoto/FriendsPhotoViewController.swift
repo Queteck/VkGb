@@ -16,7 +16,7 @@ class FriendsPhotoViewController: UICollectionViewController {
     var id: Int!
     
     private var photosList: Results<VKPhotos>?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareRealm()

@@ -24,7 +24,7 @@ class NewsViewCell: UITableViewCell {
     @IBOutlet weak var viewsCount: UILabel!
     
     
-    func config(newsData: NewsData, profile: ProfilesData) {
+    func config(newsData: NewsData, profile: ProfilesData, queue: OperationQueue) {
         authorName.text = String(profile.author)
         newsText.text = newsData.text
         commentsCount.text = String(newsData.comments)
@@ -32,18 +32,17 @@ class NewsViewCell: UITableViewCell {
         viewsCount.text = String(newsData.views)
         likesCount.text = String(newsData.likes)
         
-        DispatchQueue.global().async {
-            do {
-                let image = try UIImage(data: Data(contentsOf: URL(string:newsData.photo)!))
-                let authorImage = try UIImage(data: Data(contentsOf: URL(string:profile.authorPhoto)!))
-                DispatchQueue.main.async {
-                    self.newsImage.image = image
-                    self.authorAvatar.image = authorImage
-                }
-            } catch {
-                print(error)
+        loadImageForImageView(url: newsData.photo, imageView: newsImage, queue: queue)
+        loadImageForImageView(url: profile.authorPhoto, imageView: authorAvatar, queue: queue)
+    }
+    
+    private func loadImageForImageView(url: String, imageView: UIImageView, queue: OperationQueue) {
+        let operation = GetCacheImage(url: url)
+        operation.completionBlock = {
+            OperationQueue.main.addOperation {
+                imageView.image = operation.outputImage
             }
         }
-
+        queue.addOperation(operation)
     }
 }
