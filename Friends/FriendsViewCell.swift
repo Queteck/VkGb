@@ -54,7 +54,7 @@ class FriendsViewCell: UITableViewCell {
         // получаем размер текста, передавая сам текст и шрифт
         let friendsNameLabelSize = getLabelSize(text: friendsName.text!, font: friendsName.font)
         // рассчитываем координату по оси Х
-        let friendsNameLabelX = (bounds.width - friendsNameLabelSize.width) / 2
+        let friendsNameLabelX = friendAvatar.frame.width + 2 * instets
         // получаем точку верхнего левого угла надписи
         let friendsNameLabelOrigin = CGPoint(x: friendsNameLabelX, y: instets)
         // получаем фрейм и устанавливаем его UILabel
@@ -64,7 +64,7 @@ class FriendsViewCell: UITableViewCell {
     func friendAvatarFrame() {
         let friendAvatarSideLinght: CGFloat = 50
         let friendAvatarSize = CGSize(width: friendAvatarSideLinght, height: friendAvatarSideLinght)
-        let friendAvatarOrigin = CGPoint(x: bounds.midX - friendAvatarSideLinght / 2, y: bounds.midY - friendAvatarSideLinght / 2)
+        let friendAvatarOrigin = CGPoint(x: bounds.origin.x + instets, y: bounds.midY - friendAvatarSideLinght / 2)
         friendAvatar.frame = CGRect(origin: friendAvatarOrigin, size: friendAvatarSize)
     }
     

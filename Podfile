@@ -7,6 +7,8 @@ target 'VkGb' do
   pod 'Alamofire', '~> 4.7'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'Firebase/Core'
+  
    # Pods for VkGb
 
 end
