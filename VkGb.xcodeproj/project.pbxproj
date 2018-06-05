@@ -40,6 +40,7 @@
 		ACC9493A20B852CA004109B2 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9493920B852CA004109B2 /* PostService.swift */; };
 		ACC9493C20B85459004109B2 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9493B20B85459004109B2 /* PostData.swift */; };
 		ACC9493E20BC8792004109B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACC9493D20BC8792004109B2 /* GoogleService-Info.plist */; };
+		ACC9494020C6D63C004109B2 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9493F20C6D63C004109B2 /* MapKitViewController.swift */; };
 		ACE3645D207FE53F00050924 /* FriendsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE3645C207FE53F00050924 /* FriendsData.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		ACC9493920B852CA004109B2 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		ACC9493B20B85459004109B2 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		ACC9493D20BC8792004109B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACC9493F20C6D63C004109B2 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		ACE3645C207FE53F00050924 /* FriendsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +234,7 @@
 				ACC9493520B84FE2004109B2 /* PostViewController.swift */,
 				ACC9493920B852CA004109B2 /* PostService.swift */,
 				ACC9493B20B85459004109B2 /* PostData.swift */,
+				ACC9493F20C6D63C004109B2 /* MapKitViewController.swift */,
 			);
 			path = AddPost;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 			files = (
 				AC4894EB207CE81C00125F7B /* SearchService.swift in Sources */,
 				ACE3645D207FE53F00050924 /* FriendsData.swift in Sources */,
+				ACC9494020C6D63C004109B2 /* MapKitViewController.swift in Sources */,
 				AC7521DC2085376A00DA2EAB /* PhotosData.swift in Sources */,
 				AC319B3C20910C4C0048984B /* NewsService.swift in Sources */,
 				ACC9493C20B85459004109B2 /* PostData.swift in Sources */,
