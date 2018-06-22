@@ -8,17 +8,39 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapKitViewController: UIViewController {
+class MapKitViewController: UIViewController, CLLocationManagerDelegate {
+
     @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let currentLocation = locations.last?.coordinate {
+            print(currentLocation)
+            let coordinate = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+            let coder = CLGeocoder()
+            coder.reverseGeocodeLocation(coordinate) {(myPlaces,Error) -> Void in
+                if let place = myPlaces?.first {
+                    print(place.locality)
+                }
+            }
+            let currentRadius: CLLocationDistance = 1000
+            let currentRegion = MKCoordinateRegionMakeWithDistance((currentLocation), currentRadius *
+                2.0, currentRadius * 2.0)
+            self.mapView.setRegion(currentRegion, animated: true)
+            self.mapView.showsUserLocation = true
+        }
+    }
     @IBAction func closeMap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
